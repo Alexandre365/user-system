@@ -1,0 +1,27 @@
+main{
+    display: flex;
+    justify-content: center;
+}
+.App_div{
+    width: min(1440px,100%);
+    margin: 0px 10px;
+}
+.App_img{
+    display: none;
+}
+
+@media only screen and (min-width: 1000px) {
+    .App_responsive{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .App_Login{
+        width: 100%;
+    }
+    .App_img{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}

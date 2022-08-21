@@ -1,0 +1,51 @@
+.Link_Entrar{
+    width: 100%;
+}
+.Login_div{
+    background-color: #151515;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+.Button_Login{
+    display: flex;
+    flex-direction: column;
+}
+
+.Button_Entrar{
+    font-size: 18px;
+    padding: 15px;
+    margin: 10px 0px ;
+    background-color: #236AF4;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+.Button_Inscrever_se{
+    font-size: 18px;
+    padding: 15px;
+    margin: 10px 0px ;
+    background-color: #3F3F3F;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+form > label{
+    margin-top: 10px;
+}
+form > input{
+    background-color: #222222;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}

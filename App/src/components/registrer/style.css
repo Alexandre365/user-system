@@ -1,0 +1,31 @@
+.Registrer_div{
+    background-color: #151515;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+.Button_Registrer{
+    height: 60px;
+    display: flex;
+    align-items: flex-end;
+}
+.Button_Registrer > button{
+    width: 100%;
+    padding: 10px;
+    background-color: #236AF4;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+.Button_Registrer > button:active{
+    background-color: #3a77f1;
+}
+.Registrer_Link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
