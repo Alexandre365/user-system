@@ -1,3 +1,21 @@
+button{
+    cursor: pointer;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+form > label{
+    margin-top: 10px;
+}
+form > input{
+    background-color: #222222;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
 .Link_Entrar{
     width: 100%;
 }
@@ -35,17 +53,10 @@
     justify-content: center;
     text-decoration: none;
 }
-form{
-    display: flex;
-    flex-direction: column;
+
+.erro{
+    border: 2px solid rgb(228, 26, 26);
 }
-form > label{
-    margin-top: 10px;
-}
-form > input{
-    background-color: #222222;
-    color: white;
-    padding: 10px;
+.Sucesso{
     border: none;
-    border-radius: 5px;
 }

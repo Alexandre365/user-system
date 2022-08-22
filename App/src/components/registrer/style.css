@@ -1,3 +1,8 @@
+span{
+    font-size: 14px;
+    color: rgb(194, 13, 13);
+}
+
 .Registrer_div{
     background-color: #151515;
     padding: 10px 10px;
@@ -28,4 +33,10 @@
     align-items: center;
     text-decoration: none;
     color: white;
+}
+.erro{
+    border: 2px solid rgb(228, 26, 26);
+}
+.Sucesso{
+    border: none;
 }

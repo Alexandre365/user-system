@@ -7,7 +7,50 @@ export default () =>{
     const [Email, setEmail] = useState('');
     const [Senha, setSenha] = useState('');
 
+    // color 
+    const [Color, setColor] = useState(
+        {
+            StatusEmail:'',
+            TextEmail: '',
+            StatusSenha:'',
+            TextSenha: '',
+        }
+    );
+
+
     const get = () =>{
+
+        if(!Email || typeof Email == undefined || Email == null){
+            setColor(previousState =>{
+                return{...previousState, TextEmail: 'Coloque o seu Email'}
+            })    
+            setColor(previousState =>{
+                return{...previousState, StatusEmail: 'erro'}
+            })      
+        }else{
+            setColor(previousState =>{
+                return{...previousState, TextEmail: ''}
+            })    
+            setColor(previousState =>{
+                return{...previousState, StatusEmail: 'Sucesso'}
+            })
+        }
+        if(!Senha || typeof Senha == undefined || Senha == null){
+            setColor(previousState =>{
+                return{...previousState, TextSenha: 'Coloque sua Senha'}
+            })    
+            setColor(previousState =>{
+                return{...previousState, StatusSenha: 'erro'}
+            })       
+        }else{
+            setColor(previousState =>{
+                return{...previousState, TextSenha: ''}
+            })    
+            setColor(previousState =>{
+                return{...previousState, StatusSenha: 'Sucesso'}
+            })
+        }
+
         const data = {
             Email:Email,
             Senha:Senha
@@ -25,13 +68,16 @@ export default () =>{
         </p>
         <form>
             <label htmlFor="Email">Email/Nome</label>
-            <input type="text" name='Email' id='Email' placeholder='Seu@email.com' onChange={(e)=>{
+            <input type="text" name='Email' id='Email' className={Color.StatusEmail} placeholder='Seu@email.com' onChange={(e)=>{
                 setEmail(e.target.value)
             }}/>
+            <span>{Color.TextEmail}</span>
+
             <label htmlFor="Senha">Senha</label>
-            <input type="password" name='Senha' id='Senha' placeholder='******' onChange={(e)=>{
+            <input type="password" name='Senha' id='Senha' className={Color.StatusSenha} placeholder='******' onChange={(e)=>{
                 setSenha(e.target.value)
             }}/>
+            <span>{Color.TextSenha}</span>
         </form>
         <p>Ao fazer login, você concorda com nossos <a href='#'>Termos e Condições</a></p>
         <div className='Button_Login'>
