@@ -2,6 +2,7 @@ import { useState } from 'react'
 import React from 'react'
 import './style.css'
 import api from  '../../services/api'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default () =>{
     const [Email, setEmail] = useState('');
@@ -16,6 +17,15 @@ export default () =>{
             TextSenha: '',
         }
     );
+
+    const storeData = async (value) => {
+        try {
+          await AsyncStorage.setItem('@storage_Key', value)
+          location.href = 'http://127.0.0.1:5173/dashboard'
+        } catch (e) {
+          console.log(e)
+        }
+      }
 
 
     const get = () =>{
@@ -56,7 +66,10 @@ export default () =>{
             Senha:Senha
         }
    
-        api.post('/Login',data).then((res)=> console.log(res.data)).catch((err)=> console.log(err.error))
+        api.post('/Login',data).then((res)=> {
+            console.log(res.data[0]._id)
+            storeData(res.data[0]._id)
+        }).catch((err)=> console.log(err.error))
     }
 
     return <div className='Login_div'>

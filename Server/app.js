@@ -6,6 +6,8 @@ const mongoose = require('mongoose')
 
 const personRoutes = require('../Server/router/personRoutes')
 const loginRoutes = require('../Server/router/loginRoutes')
+const dashboardRoutes = require('../Server/router/DashboardRoutes')
+
 
 app.use(cors())
 
@@ -21,6 +23,7 @@ app.use(cors())
 // Rotas da API 
     app.use('/Person', personRoutes)
     app.use('/Login',loginRoutes)
+    app.use('/Dashboard',dashboardRoutes)
 
 // Servidor
 app.listen(8800, () => console.log('Servidor está rodando http://localhost:8800/'))

@@ -1,0 +1,30 @@
+.banner{
+    width: 100%;
+    height: 238px;
+    background-color: #236AF4;
+}
+.Dashboard_Link{
+    position: relative;
+    top: 10px;
+    left: 10px;
+    color: white;
+}
+.Central{
+    display: flex;
+    justify-content: center;
+}
+.perfil{
+    width: min(170px,100vw);
+    height: min(170px,100vw);
+    background-color: #CFCECE;
+    border-radius: 100%;
+    position: relative;
+    top: 120px;
+}
+@media only screen and (min-width: 1000px) {
+    .Central{
+        display: flex;
+        justify-content: flex-start;
+        margin: 0px 10px ;
+    }
+}

@@ -2,10 +2,13 @@ main{
     display: flex;
     justify-content: center;
 }
-.App_div{
-    width: min(1440px,100%);
-    margin: 0px 10px;
+.Title{
+    margin: 20px 10px ;
 }
+.Contaienr{
+    width: min(1440px,100%);
+}
+
 .App_img{
     display: none;
 }

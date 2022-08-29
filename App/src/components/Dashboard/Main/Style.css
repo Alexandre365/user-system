@@ -1,0 +1,38 @@
+.Main-1{
+    width: min(1440px,100%);
+    position: relative;
+    top: 80px;
+    flex-direction: column;
+}
+.Header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.Main-2{
+    margin: 10px 10px;
+}
+.NameTag{
+    font-size: 35px;
+    color: #236AF4;
+}
+.Custom_H3{
+    margin: 10px 0px;
+    font-size: 25px;
+}
+.Custom_H4{
+    margin: 10px 0px;
+    font-size: 20px;
+}
+.Custom_P{
+    font-size: 20px;
+    color: #707070;
+}
+@media only screen and (min-width: 1000px) {
+    .Header{
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        margin: 0px 10px;
+    }
+}
