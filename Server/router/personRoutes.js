@@ -2,14 +2,15 @@ const Person = require('../Models/Person')
 const router = require('express').Router()
 
 router.post('/', async (req,res)=>{
-    const {Nome,Sobrenome,Email,Idade,Senha} = req.body
+    const {Nome,Sobrenome,Email,Idade,Senha,Sobre} = req.body
 
     const newPerson = {
         Nome:Nome,
         Sobrenome:Sobrenome,
         Email:Email,
         Idade:Idade,
-        Senha:Senha
+        Senha:Senha,
+        Sobre:Sobre,
     }
 
     try {
@@ -30,12 +31,12 @@ router.get('/', async (req,res)=>{
     }
 })
 
-router.post('/Login', async (req,res)=>{
+router.post('/Email', async (req,res)=>{
     const {Email} = req.body
 
     try {
         const people = await Person.find({
-            Email: Email
+            Email: Email,
         })
         res.status(200).json(people)    
     } catch (error) {

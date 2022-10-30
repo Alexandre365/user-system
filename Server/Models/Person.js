@@ -24,7 +24,11 @@ const Person = mongoose.model('Person',{
     date:{
         type: Date,
         default: Date.now()
-    }
+    },
+    Sobre:{
+        type: String,
+        required: true
+    },
 })
 
 module.exports = Person

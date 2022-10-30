@@ -7,14 +7,26 @@ router.post('/', async (req,res)=>{
         res.status(200).json(adventure)  
     })
 
-    /*try {
-        const people = await Person.findById(id).then((e)=>{
+})
 
-        })
-        res.status(200).json(people)    
-    } catch (error) {
-        res.status(500).json({error: error})
-    }*/
+router.put('/updete/email', async (req,res)=>{
+    const {id, email} = req.body
+    Person.updateOne({_id: id},{Email: email}, (err, adventure) =>{
+        res.status(200).json(adventure)  
+    })
+})
+router.put('/updete/about', async (req,res)=>{
+    const {id, sobre} = req.body
+    Person.updateOne({_id: id},{Sobre: sobre}, (err, adventure) =>{
+        res.status(200).json(adventure)  
+    })
+})
+
+router.delete('/delete', async (req,res)=>{
+    const {id} = req.body
+    Person.deleteOne({_id:id},(err, adventure) =>{
+        res.status(200).json(adventure)  
+    })
 })
 
 module.exports = router

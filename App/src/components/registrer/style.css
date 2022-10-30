@@ -2,7 +2,13 @@ span{
     font-size: 14px;
     color: rgb(194, 13, 13);
 }
-
+textarea{
+    background-color: #222222;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+}
 .Registrer_div{
     background-color: #151515;
     padding: 10px 10px;

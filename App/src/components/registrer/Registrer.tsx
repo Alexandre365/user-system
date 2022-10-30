@@ -5,12 +5,25 @@ import api from  '../../services/api'
 import { Link } from "react-router-dom";
 import { AiOutlineCaretLeft } from "react-icons/ai";
 
+import AlertColor from '../../function/AlertColor';
+import Toast from '../toast';
+
+
+
 export default () =>{
     const [Nome, setNome] = useState('');
     const [Sobrenome, setSobrenome] = useState('');
     const [Email, setEmail] = useState('');
     const [Idade, setIdade] = useState('');
     const [Senha, setSenha] = useState('');
+    const [ConfSenha, setConfSenha] = useState('');
+    const [Sobre, setSobre] = useState('Nada sobre!');
+    const [menuInVisible, setMenuIsVisible] = useState(false)
+    const [toast, setToast] = useState({
+        Text: '',
+        Stats: false,
+        Color: ''
+    });
 
     // color 
     const [Color, setColor] = useState(
@@ -25,99 +38,98 @@ export default () =>{
             TextIdade: '',
             StatusSenha:'',
             TextSenha: '',
+            StatusConfSenha:'',
+            TextConfSenha: '',
         }
     );
+   
 
     const post = () =>{
+        setColor(previousState =>{
+            return{...previousState, TextNome: AlertColor(Nome, 'seu Nome').TextNome}
+        })
+        setColor(previousState =>{
+            return{...previousState, StatusNome: AlertColor(Nome, 'seu Nome').StatusNome}
+        }) 
+        setColor(previousState =>{
+            return{...previousState, TextSobrenome: AlertColor(Sobrenome, 'seu Sobrenome').TextNome}
+        })
+        setColor(previousState =>{
+            return{...previousState, StatusSobrenome: AlertColor(Sobrenome, 'seu Sobrenome').StatusNome}
+        }) 
+        setColor(previousState =>{
+            return{...previousState, TextEmail: AlertColor(Email, 'seu Email').TextNome}
+        })
+        setColor(previousState =>{
+            return{...previousState, StatusEmail: AlertColor(Email, 'seu Email').StatusNome}
+        }) 
+        setColor(previousState =>{
+            return{...previousState, TextIdade: AlertColor(Idade, 'sua Idade').TextNome}
+        })
+        setColor(previousState =>{
+            return{...previousState, StatusIdade: AlertColor(Idade, 'sua Idade').StatusNome}
+        }) 
+        setColor(previousState =>{
+            return{...previousState, TextSenha: AlertColor(Senha, 'sua Senha').TextNome}
+        })
+        setColor(previousState =>{
+            return{...previousState, StatusSenha: AlertColor(Senha, 'sua Senha').StatusNome}
+        }) 
+        setColor(previousState =>{
+            return{...previousState, TextConfSenhaSenha: AlertColor(ConfSenha, 'Confirme sua senha').TextNome}
+        })
+        setColor(previousState =>{
+            return{...previousState, StatusConfSenhaSenha: AlertColor(ConfSenha, 'Confirme sua senha').StatusNome}
+        })
 
-        if(!Nome || typeof Nome == undefined || Nome == null){
+        api.post('/Person/Email', {Email:Email}).then((res)=> {
+           if (res.data.length >= 1) {
             setColor(previousState =>{
-                return{...previousState, TextNome: 'Coloque um Nome'}
-            })    
-            setColor(previousState =>{
-                return{...previousState, StatusNome: 'erro'}
-            })      
-        }else{
-            setColor(previousState =>{
-                return{...previousState, TextNome: ''}
-            })    
-            setColor(previousState =>{
-                return{...previousState, StatusNome: 'Sucesso'}
+                return{...previousState, TextEmail: 'Email já existe!'}
             })
-        }
-        if(!Sobrenome || typeof Sobrenome == undefined || Sobrenome == null){
-            setColor(previousState =>{
-                return{...previousState, TextSobrenome: 'Coloque um Sobrenome'}
-            })    
-            setColor(previousState =>{
-                return{...previousState, StatusSobrenome: 'erro'}
-            })       
-        }else{
-            setColor(previousState =>{
-                return{...previousState, TextSobrenome: ''}
-            })    
-            setColor(previousState =>{
-                return{...previousState, StatusSobrenome: 'Sucesso'}
-            })
-        }
-        if(!Email || typeof Email == undefined || Email == null){
-            setColor(previousState =>{
-                return{...previousState, TextEmail: 'Coloque um Email'}
-            })    
             setColor(previousState =>{
                 return{...previousState, StatusEmail: 'erro'}
-            })      
-        }else{
+            })
+           } else {
             setColor(previousState =>{
                 return{...previousState, TextEmail: ''}
-            })    
+            })
             setColor(previousState =>{
                 return{...previousState, StatusEmail: 'Sucesso'}
             })
-        }
-        if(!Idade || typeof Idade == undefined || Idade == null){
-            setColor(previousState =>{
-                return{...previousState, TextIdade: 'Coloque sua idade'}
-            })    
-            setColor(previousState =>{
-                return{...previousState, StatusIdade: 'erro'}
-            })      
-        }else{
-            setColor(previousState =>{
-                return{...previousState, TextIdade: ''}
-            })    
-            setColor(previousState =>{
-                return{...previousState, StatusIdade: 'Sucesso'}
-            })
-        }
-        if(!Senha || typeof Senha == undefined || Senha == null){
-            setColor(previousState =>{
-                return{...previousState, TextSenha: 'Coloque sua Senha validade'}
-            })    
-            setColor(previousState =>{
-                return{...previousState, StatusSenha: 'erro'}
-            })      
-        }else{
-            setColor(previousState =>{
-                return{...previousState, TextSenha: ''}
-            })    
-            setColor(previousState =>{
-                return{...previousState, StatusSenha: 'Sucesso'}
-            })
-        }
-
-        const data = {
-            Nome: Nome,
-            Sobrenome:Sobrenome,
-            Email:Email,
-            Idade:Idade,
-            Senha:Senha
-        }
-        api.post('/Person',data).then((res)=> console.log(res.data.message)).catch((err)=> console.log(err.error))
+            if (Senha == ConfSenha && Senha != '' && ConfSenha != '' ) {
+                
+                const data = {
+                    Nome: Nome,
+                    Sobrenome:Sobrenome,
+                    Email:Email,
+                    Idade:Idade,
+                    Senha:Senha,
+                    Sobre:Sobre
+                }
+        
+                api.post('/Person',data).then((res)=> {
+                    setToast(PreviousState =>{
+                        return{...PreviousState, Text: res.data.message}
+                    })
+                    setToast(PreviousState =>{
+                        return{...PreviousState, Color: 'Toast_Sucesso'}
+                    })
+                    setToast(PreviousState =>{
+                        return{...PreviousState, Stats: true}
+                    })
+                }).catch((err)=> console.log(err.error))
+            } else {
+                
+            }
+           }
+        })
+            
     }
 
     
     return <div className='Registrer_div'>
+        <Toast Text={toast.Text} Stats={toast.Stats} Color={toast.Color}/>
             <Link to={'/'} className='Registrer_Link'><AiOutlineCaretLeft/> Voltar</Link>
             <h2>
             Inscrever-se
@@ -153,6 +165,17 @@ export default () =>{
                     setSenha(e.target.value)
                 }}/>
                 <span>{Color.TextSenha}</span>
+
+                <label htmlFor="ConfSenha">Confirma Senha</label>
+                <input type="password" name="ConfSenha" id="ConfSenha" className={Color.StatusConfSenha} placeholder='*****' onChange={(e)=>{
+                    setConfSenha(e.target.value)
+                }}/>
+                <span>{Color.TextConfSenha}</span>
+                <label htmlFor="Sobre">Sobre Você</label>
+                <textarea name="" id="" cols={20} rows={20} maxLength={20} onChange={(e)=>{
+                    setSobre(String(e.target.value))
+                }}></textarea>
+
             </form>
             <div className='Button_Registrer'>
                 <button onClick={()=>{

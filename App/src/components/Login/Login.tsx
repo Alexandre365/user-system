@@ -4,6 +4,8 @@ import './style.css'
 import api from  '../../services/api'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import Toast from '../toast';
+
 export default () =>{
     const [Email, setEmail] = useState('');
     const [Senha, setSenha] = useState('');
@@ -73,6 +75,7 @@ export default () =>{
     }
 
     return <div className='Login_div'>
+
         <h2>
             Conecte-se
         </h2>
