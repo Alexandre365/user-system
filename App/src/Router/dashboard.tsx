@@ -22,7 +22,7 @@ export default () => {
       }
     return (    
         <>
-            <Header />
+            <Header id={id}/>
             <Main id={id} />
         </>
     );

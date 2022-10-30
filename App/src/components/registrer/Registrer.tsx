@@ -172,7 +172,7 @@ export default () =>{
                 }}/>
                 <span>{Color.TextConfSenha}</span>
                 <label htmlFor="Sobre">Sobre Você</label>
-                <textarea name="" id="" cols={20} rows={20} maxLength={20} onChange={(e)=>{
+                <textarea name="" id="" cols={20} rows={20} maxLength={100} onChange={(e)=>{
                     setSobre(String(e.target.value))
                 }}></textarea>
 

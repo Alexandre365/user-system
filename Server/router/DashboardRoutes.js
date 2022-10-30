@@ -22,8 +22,8 @@ router.put('/updete/about', async (req,res)=>{
     })
 })
 
-router.delete('/delete', async (req,res)=>{
-    const {id} = req.body
+router.delete('/delete/:id', async (req,res)=>{
+    const id = req.params.id
     Person.deleteOne({_id:id},(err, adventure) =>{
         res.status(200).json(adventure)  
     })

@@ -39,7 +39,7 @@ export default ({id}) => {
                         let test = EmailStyle == 'invisible' ? 'visible' : 'invisible'
                         setEmailStyle(test)
                     }}>Atualizar</span></div>
-                    <div className={`Card_Dashboard_input ${EmailStyle}`}><input type="text" value={Email}  onChange={(e)=>{
+                    <div className={`Card_Dashboard_input ${EmailStyle}`}><input type="text" value={Email} placeholder='Seu novo email:' onChange={(e)=>{
                         setEmail(e.target.value)
                     }}  /><button onClick={()=>{
                         const data = {
@@ -58,7 +58,7 @@ export default ({id}) => {
                         let test = AboutSyle == 'invisible' ? 'visible' : 'invisible'
                         setAboutSyle(test)
                     }}>Atualizar</span></div>
-                    <div className={`Card_Dashboard_input ${AboutSyle}`}><input  type="text" value={About}  onChange={(e)=>{
+                    <div className={`Card_Dashboard_input ${AboutSyle}`}><input  type="text" value={About} placeholder='Escreva sobre você:' onChange={(e)=>{
                         setAbout(e.target.value)
                     }} /><button onClick={()=>{
                         const data = {
